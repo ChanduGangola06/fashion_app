@@ -1,9 +1,17 @@
 import 'package:fashion_app/constants/my_strings.dart';
+import 'package:fashion_app/providers/onboarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => OnboardingProvider()),
+      ],
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
