@@ -4,6 +4,14 @@ class AuthProvider extends ChangeNotifier {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
+  bool _password = true;
+  bool get password => _password;
+
+  void setPassword() {
+    _password = !_password;
+    notifyListeners();
+  }
+
   void login() async {
     try {
       _isLoading = true;

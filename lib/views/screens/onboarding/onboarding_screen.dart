@@ -18,16 +18,19 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   // ignore: unused_field
-  late final PageController _pageController;
+  PageController _pageController = PageController();
 
   @override
   void initState() {
+    setData();
+    super.initState();
+  }
+
+  setData() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       var onboardProv = Provider.of<OnboardingProvider>(context, listen: false);
       _pageController = PageController(initialPage: onboardProv.selectedPage);
     });
-
-    super.initState();
   }
 
   @override

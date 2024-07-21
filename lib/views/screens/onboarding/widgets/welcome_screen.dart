@@ -6,6 +6,7 @@ import 'package:fashion_app/views/widgets/custom_button.dart';
 import 'package:fashion_app/views/widgets/reusable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -52,10 +53,11 @@ class WelcomeScreen extends StatelessWidget {
               btnWidth: ScreenUtil().screenWidth - 100,
               onTap: () {
                 // Storage().setBool('firstOpen', true);
+                context.go('/register');
               },
             ),
             SizedBox(
-              height: 20.h,
+              height: 15.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +66,9 @@ class WelcomeScreen extends StatelessWidget {
                     text: "Already have an account?",
                     style: appStyle(12, MyColors.kDark, FontWeight.normal)),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go('/login');
+                  },
                   child: const Text(
                     "Sign In",
                     style: TextStyle(fontSize: 12, color: Colors.blue),

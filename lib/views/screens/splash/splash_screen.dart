@@ -1,5 +1,7 @@
 import 'package:fashion_app/constants/my_colors.dart';
+import 'package:fashion_app/utils/services/storage.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../constants/resources.dart';
 
@@ -13,7 +15,20 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    _navigator();
     super.initState();
+  }
+
+  _navigator() async {
+    await Future.delayed(const Duration(milliseconds: 3000), () {
+      if (Storage().getBool('firstOpen') == null) {
+        //Go to the onboarding screen
+        GoRouter.of(context).go('/onboarding');
+      } else {
+        //Go to home page
+        GoRouter.of(context).go('/home');
+      }
+    });
   }
 
   @override
